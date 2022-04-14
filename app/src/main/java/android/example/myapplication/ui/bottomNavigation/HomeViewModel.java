@@ -12,6 +12,24 @@ public class HomeViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("home");
     }
+/*
+
+    private startRun() {
+        launchPrompt.isHidden = true;
+        dataView.isHidden = false;
+        startButton.isHidden = true;
+        stopButton.isHidden = false;
+    }
+    private stopRun() {
+      launchPrompt.isHidden = false;
+      dataView.isHidden = true;
+      startButton.isHidden = false;
+      stopButton.isHidden = true;
+    }
+
+
+
+ */
 
     public LiveData<String> getText(){return mText;}
 
