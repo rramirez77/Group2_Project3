@@ -14,8 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".SecondActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true" />   <!--this use to be false-->
+            android:exported="true" /> <!-- this use to be false -->
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"
