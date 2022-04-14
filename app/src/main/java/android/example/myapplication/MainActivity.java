@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         public void onLocationChanged(Location gps) {
 
             editLocation.setText("");
+
             String longitude = "Longitude: " + gps.getLongitude();
             Log.v(TAG, longitude);
             String latitude = "Latitude: " + gps.getLatitude();
