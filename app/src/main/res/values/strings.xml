@@ -14,8 +14,11 @@
     <string name="leader_board">Leader Board</string>
     <string name="stats">Stats</string>
     <string name="home">Home</string>
-    <string name="textview">TextView</string>
-    <string name="email">Email:</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="password">Password:</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="sign_up">sign up</string>
+    <string name="welcome_to_journeys">Welcome to Journeys!</string>
+    <string name="user">User</string>
+    <string name="daily_steps">Daily Steps</string>
+    <string name="name">Name</string>
 </resources>
