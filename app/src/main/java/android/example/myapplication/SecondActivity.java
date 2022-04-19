@@ -21,7 +21,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+/*
         databaseReference = FirebaseDatabase.getInstance("https://journeys-4ee13-default-rtdb.firebaseio.com/").getReference("message");
 
         databaseReference.setValue("Hello").addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -41,7 +41,10 @@ public class SecondActivity extends AppCompatActivity {
 
             }
 
-        });
+        });*/
+
+
+
 
 
     }

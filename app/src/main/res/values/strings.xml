@@ -21,4 +21,7 @@
     <string name="user">User</string>
     <string name="daily_steps">Daily Steps</string>
     <string name="name">Name</string>
+    <string name="Journeys">Journeys</string>
+    <string name="button">Button</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

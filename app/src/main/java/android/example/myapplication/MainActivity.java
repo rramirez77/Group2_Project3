@@ -1,5 +1,6 @@
 package android.example.myapplication;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.example.myapplication.databinding.ActivityMainBinding;
@@ -9,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -35,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+       // setContentView(R.layout.activity_main);
+       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -51,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+       // locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     }
-     /*
+/*
     private Boolean GpsStatus() {
         ContentResolver contentResolver = getBaseContext().getContentResolver();
 
@@ -64,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    */
 
+ */
+
+/*
     private class MyLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location gps) {
@@ -95,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
             editLocation.setText(s);
         }
     }
+*/
+
 
 }
 
