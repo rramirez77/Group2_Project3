@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private EditText editLocation = null;
     private static final String TAG = "Debug";
+
     SensorManager sensorMng = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     Sensor trigger = sensorMng.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
     boolean moving = false;
