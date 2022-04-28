@@ -1,17 +1,14 @@
 package android.example.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Set;
 /*
 -----------------------------------------------------------
    -----------------------------------------------------------
@@ -21,10 +18,21 @@ import java.util.Set;
 
  */
 public class StepActivity extends MainActivity implements SensorEventListener {
-    SensorManager sensorMng = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    Sensor trigger = sensorMng.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+    SensorManager sensorMng;
+    Sensor trigger;
     boolean moving = false;
     float previousTotalSteps = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_step);
+
+        //setup sensor management
+        sensorMng = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
+        trigger = sensorMng.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+    }
+
     @Override
     public void onResume() {
         super.onResume();

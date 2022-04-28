@@ -3,22 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_login.xml" value="0.165" />
-        <entry key="app/src/main/res/drawable/custom_button_back.xml" value="0.2255" />
-        <entry key="app/src/main/res/drawable/ic_leaderboard.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/round_drawable.xml" value="0.1545" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.244" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/ic_home.xml" value="0.244" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/ic_launcher_background.xml" value="0.244" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/ic_leaderboard.xml" value="0.244" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/ic_msg.xml" value="0.244" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/ic_stats.xml" value="0.244" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.35609103078982596" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout-w936dp/activity_login.xml" value="0.415625" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_login.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/fragment_leader_board.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/fragment_msg.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/fragment_stats.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/menu/bottom_menu.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.17704149933065597" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout-w936dp/activity_login.xml" value="0.206640625" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_home.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_home_screen.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_maps.xml" value="0.1339918946301925" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_second.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_sign_in.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_step.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/fragment_leader_board.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/fragment_msg.xml" value="0.1716485507246377" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/layout.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/menu/bottom_menu.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.15729585006693442" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.17349726775956284" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2441123188405797" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_map.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_second.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_leader_board.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.23007246376811594" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.24479166666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_leader_board.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_msg.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
