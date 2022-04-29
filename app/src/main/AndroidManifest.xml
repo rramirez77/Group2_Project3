@@ -34,6 +34,18 @@
             android:value="AIzaSyAajjnJXp3pVa1ZzKVF2dcAG51nG2VDqFo" />
 
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FriendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FriendActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".FriendActivity3"
+            android:exported="false" />
+        <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />

@@ -48,6 +48,12 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputEditText userID;
     private TextView usersName;
 
+    private final String[] idGenerator = {"Apple", "Argue", "Away", "Banana", "Book", "Box", "Cat", "Cramp", "Cute",
+            "Dog", "Door", "Dusk", "Egg", "Emu", "Exit", "Fire", "Flag", "Fern", "Get", "Gold", "Grape", "Hair", "Hello", "Horse",
+            "Ibis", "Ice", "Itch", "Jelly", "Jump", "Just", "Keep", "Kick", "Kite", "Leap", "List", "Loud", "Map", "Moon", "Most",
+            "Name", "Near", "Next", "Opal", "Open", "Orange", "Pink", "Plum", "Purple", "Quail", "Quest", "Quick", "Rest", "Roar", "Run",
+            "Sit", "Stay", "Sun", "Table", "Task", "Top", "Under", "Undo", "Unit", "Value", "Vest", "Vista", "Water", "Where", "Wish",
+            "Yard", "Yawn", "Yell", "Zero", "Zone", "Zoo"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +133,52 @@ public class SignUpActivity extends AppCompatActivity {
                                       Toast.makeText(SignUpActivity.this, "Database error!", Toast.LENGTH_SHORT).show();
                                   }
                               }); //end of addOnFailureListener
+
+                                //generate database fields for our new user
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Sun").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Mon").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Tue").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Wed").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Thu").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Fri").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Sat").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Steps").child("Life").setValue(0);
+                              databaseReference.child(mAuth.getUid()).child("Friends").child("IsFriend").setValue("");
+                              databaseReference.child(mAuth.getUid()).child("Friends").child("InReq").setValue("");
+                              databaseReference.child(mAuth.getUid()).child("Friends").child("OutReq").setValue("");
+
+                              databaseReference.child(mAuth.getUid()).child("Friends").child("FriendID").setValue("");
+                              //generate unique friendId
+                                //starts as minimum 4 word sequence, adds another word if sequence already exists
+                              final boolean[] uniqueId = {false};
+                              String friendId = "";
+                              int x = (int)(idGenerator.length* Math.random());
+                              friendId += idGenerator[x];
+                              x = (int)(idGenerator.length* Math.random());
+                              friendId += idGenerator[x];
+                              x = (int)(idGenerator.length* Math.random());
+                              friendId += idGenerator[x];
+                              while(!uniqueId[0]){
+                                  uniqueId[0] = true;
+                                  x = (int)(idGenerator.length* Math.random());
+                                  friendId += idGenerator[x];
+                                  final String[] finalFriendId = {friendId};
+                                  databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                      @Override
+                                      public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                          for (DataSnapshot childSnapshot : snapshot.getChildren()){
+                                              if(finalFriendId[0].equals(childSnapshot.child("Friends").child("FriendID").getValue().toString())){
+                                                  uniqueId[0] = false;
+                                                  break;
+                                              }
+                                          }
+                                      }
+                                      @Override
+                                      public void onCancelled(@NonNull DatabaseError error) {}
+                                  });
+                              }
+                              databaseReference.child(mAuth.getUid()).child("Friends").child("FriendID").setValue(friendId);
+
 
                                 //success msg if registration is successful
                                 Toast.makeText(SignUpActivity.this, "Register Successful!", Toast.LENGTH_SHORT).show();

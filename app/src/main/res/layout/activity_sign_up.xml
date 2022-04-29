@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="135dp"
         android:layout_marginEnd="20dp"
         android:hint="Name"
         android:padding="5dp"
@@ -27,18 +27,18 @@
             android:inputType="textPersonName"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:textSize="20sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TxtLayoutEmail"
-        android:layout_below="@id/TxtLayoutName"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/TxtLayoutName"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="Email"
         android:padding="5dp"
@@ -52,7 +52,7 @@
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:textSize="20sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="Password"
         android:padding="5dp"
@@ -77,7 +77,7 @@
             android:inputType="textPassword"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:textSize="20sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="Confirm Password"
         android:padding="5dp"
@@ -102,7 +102,7 @@
             android:inputType="textPassword"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="14sp" />
+            android:textSize="20sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,23 +126,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/TxtLayoutCfmPassword"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/custom_button_back"
 
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/pass_signIn"
-        android:layout_below="@id/registration_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/registration_btn"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:text="Already a User? Login"
         android:textAlignment="center"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>
