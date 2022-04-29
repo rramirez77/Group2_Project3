@@ -1,30 +1,33 @@
 package android.example.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Set;
-/*
------------------------------------------------------------
-   -----------------------------------------------------------
-   Moved to Main Activity
-   -----------------------------------------------------------
------------------------------------------------------------
+import androidx.appcompat.app.AppCompatActivity;
 
- */
-public class StepActivity extends MainActivity implements SensorEventListener {
-    SensorManager sensorMng = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    Sensor trigger = sensorMng.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+public class StepActivity extends AppCompatActivity implements SensorEventListener {
+    SensorManager sensorMng;
+    Sensor trigger;
     boolean moving = false;
     float previousTotalSteps = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_step);
+
+        //setup sensor management
+        sensorMng = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
+        trigger = sensorMng.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -36,8 +39,6 @@ public class StepActivity extends MainActivity implements SensorEventListener {
             sensorMng.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
         }
     }
-
-
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -59,8 +60,7 @@ public class StepActivity extends MainActivity implements SensorEventListener {
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putFloat("key", previousTotalSteps);
-        editor.apply();
-    }
+        editor.apply();    }
     private void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         float savedSteps = sharedPreferences.getFloat("key", 0);
