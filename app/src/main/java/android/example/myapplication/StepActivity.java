@@ -9,15 +9,10 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-/*
------------------------------------------------------------
-   -----------------------------------------------------------
-   Moved to Main Activity
-   -----------------------------------------------------------
------------------------------------------------------------
 
- */
-public class StepActivity extends MainActivity implements SensorEventListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class StepActivity extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorMng;
     Sensor trigger;
     boolean moving = false;
@@ -45,8 +40,6 @@ public class StepActivity extends MainActivity implements SensorEventListener {
         }
     }
 
-
-
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(moving){
@@ -67,8 +60,7 @@ public class StepActivity extends MainActivity implements SensorEventListener {
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putFloat("key", previousTotalSteps);
-        editor.apply();
-    }
+        editor.apply();    }
     private void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         float savedSteps = sharedPreferences.getFloat("key", 0);

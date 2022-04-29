@@ -46,22 +46,10 @@
             android:name=".SignInActivity"
             android:exported="true" />
         <activity
-            android:name=".SecondActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" /> <!-- this use to be false -->
-        <!--
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/app_name">
-        -->
-        <activity
-            android:name=".SignUpActivity"
+            android:name=".StepActivity"
             android:exported="true" />
         <activity
-            android:name=".StepActivity"
+            android:name=".SignUpActivity"
             android:exported="true">
 
             <intent-filter>

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,28 +15,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button startBtn;
-    private Button stopBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        startBtn = findViewById(R.id.Start_btn);
-        stopBtn = findViewById(R.id.Stop_btn);
+        Button TOSTEP = findViewById(R.id.TOSTEPCOUNTER);
+        TOSTEP.setOnClickListener(view -> {
+            Intent i = new Intent(HomeActivity.this, StepActivity.class);
+            startActivity(i);
+            finish();
+        });
 
-        startBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(HomeActivity.this, MapsActivity.class);
-                startActivity(i);
-                finish();
-            }
-        }); //end of start button listener
-
+        Calendar calendar = Calendar.getInstance();
         TextView welcome = findViewById(R.id.welcome);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         mDatabase.child("Name").addValueEventListener(new ValueEventListener() {
@@ -56,19 +50,46 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView wstepText = findViewById(R.id.weekCounterText);
         TextView stepText = findViewById(R.id.counterText);
-        /*
+
         mDatabase.child("Steps").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int steps = Integer.parseInt(snapshot.child("Sun").getValue().toString()) +
+                int day = calendar.DAY_OF_WEEK;
+                String steps = "";
+                switch(day){
+                    case 1:
+                        steps = snapshot.child("Mon").getValue().toString();
+                        break;
+                    case 2:
+                        steps = snapshot.child("Tue").getValue().toString();
+                        break;
+                    case 3:
+                        steps = snapshot.child("Wed").getValue().toString();
+                        break;
+                    case 4:
+                        steps = snapshot.child("Thu").getValue().toString();
+                        break;
+                    case 5:
+                        steps = snapshot.child("Fri").getValue().toString();
+                        break;
+                    case 6:
+                        steps = snapshot.child("Sat").getValue().toString();
+                        break;
+                    case 7:
+                        steps = snapshot.child("Sun").getValue().toString();
+                        break;
+                }
+
+                /*int steps = Integer.parseInt(snapshot.child("Sun").getValue().toString()) +
                         Integer.parseInt(snapshot.child("Mon").getValue().toString()) +
                         Integer.parseInt(snapshot.child("Tue").getValue().toString()) +
                         Integer.parseInt(snapshot.child("Wed").getValue().toString()) +
                         Integer.parseInt(snapshot.child("Thu").getValue().toString()) +
                         Integer.parseInt(snapshot.child("Fri").getValue().toString()) +
-                        Integer.parseInt(snapshot.child("Sat").getValue().toString());
+                        Integer.parseInt(snapshot.child("Sat").getValue().toString());*/
 
-                wstepText.setText("You've taken " + steps + " steps\nso far this week!");
+                wstepText.setText("Today, you've taken\n" + steps + " steps!");
+
                 stepText.setText(snapshot.child("Sun").getValue() +
                         "\n" + snapshot.child("Mon").getValue() +
                         "\n" + snapshot.child("Tue").getValue() +
@@ -86,7 +107,7 @@ public class HomeActivity extends AppCompatActivity {
                 System.out.println("DATABASE ERROR");
             }
         });
-        */
+
         //FOOTER ACCESS STUFF
         Button mapBtn = findViewById(R.id.mapButton);
         mapBtn.setOnClickListener(view -> {
