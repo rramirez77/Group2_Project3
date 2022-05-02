@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/drawable/round_drawable.xml" value="0.1545" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.15729585006693442" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.17349726775956284" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.192481884057971" />
+        <entry key="app/src/main/res/layout/activity_friends2.xml" value="0.192481884057971" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2441123188405797" />
         <entry key="app/src/main/res/layout/activity_location_provider.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
