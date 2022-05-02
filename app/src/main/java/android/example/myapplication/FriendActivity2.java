@@ -18,23 +18,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Locale;
-
 public class FriendActivity2 extends AppCompatActivity {
 
+    /**
+     * Create UI elements on init
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends2);
 
+        FriendActivity2 c = this;
+        LinearLayout friendHolder = findViewById(R.id.friendHolder);
+        TextView myFriendId = findViewById(R.id.myFriendCode);
+        String myId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //top nav buttons
         Button friendActivityBtn = findViewById(R.id.friendMain);
+        friendActivityBtn.setBackgroundColor(Color.YELLOW);
         friendActivityBtn.setOnClickListener(view -> {
             Intent i = new Intent(FriendActivity2.this, FriendActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(i);
             finish();
         });
+
         Button friendMakeBtn = findViewById(R.id.friendReq);
+        friendMakeBtn.setBackgroundColor(Color.YELLOW);
         friendMakeBtn.setOnClickListener(view -> {
             Intent i = new Intent(FriendActivity2.this, FriendActivity3.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -42,22 +53,11 @@ public class FriendActivity2 extends AppCompatActivity {
             finish();
         });
 
+        findViewById(R.id.friendAdd).setBackgroundColor(Color.CYAN);
         //end friend buttons
 
-        FriendActivity2 c = this;
-        LinearLayout friendHolder = findViewById(R.id.friendHolder);
-
-        TextView myFriendId = findViewById(R.id.myFriendCode);
-
-        //create top nav buttons
-        findViewById(R.id.friendMain).setBackgroundColor(Color.YELLOW);
-        findViewById(R.id.friendAdd).setBackgroundColor(Color.CYAN);
-        findViewById(R.id.friendReq).setBackgroundColor(Color.YELLOW);
-
         //pull data, generate ui
-        String myId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(myId);
-
         mDatabase.child("Friends").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -146,6 +146,11 @@ public class FriendActivity2 extends AppCompatActivity {
         //END GENERIC MENU
     }
 
+    /**
+    * findFriend button sends a friend request to the user who's friendcode was input in the proper text field.
+    * other user will then need to accept
+     * @param v
+     */
     public void findFriend(View v){
         //add friends
         TextView inString = findViewById(R.id.findFriendField);
@@ -174,14 +179,12 @@ public class FriendActivity2 extends AppCompatActivity {
                     }
                 }
                 if(!found){
-                    //prompt not found
+                    //no other user with that friend code could be found. Do stuff?
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
 
     }
