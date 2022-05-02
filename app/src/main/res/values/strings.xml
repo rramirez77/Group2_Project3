@@ -20,11 +20,9 @@
     <string name="welcome_to_journeys">Welcome to Journeys!</string>
     <string name="user">User</string>
     <string name="daily_steps">Daily Steps</string>
-    <string name="Journeys">Journeys</string>
-    <string name="title_activity_maps">maps</string>
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="ready_to_start_a_journey">Ready to start a Journey?</string>
-    <string name="_0">0</string>
     <string name="name">Name</string>
+    <string name="Journeys">Journeys</string>
+    <string name="button">Button</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="_0">0</string>
 </resources>
