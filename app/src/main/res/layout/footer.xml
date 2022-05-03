@@ -11,8 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="16dp"
-        android:text="MAP"
         android:textSize="20dp"
+        app:icon="@android:drawable/ic_dialog_map"
+        app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -21,8 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="HOME"
         android:textSize="20dp"
+        app:icon="@drawable/ic_home"
+        app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -33,8 +35,10 @@
         android:layout_marginStart="69dp"
         android:layout_marginEnd="67dp"
         android:layout_marginBottom="16dp"
-        android:text="FRIENDS"
         android:textSize="20dp"
+        app:icon="@drawable/ic_action_friend"
+        app:iconGravity="textStart"
+        app:iconTint="#FDFDFD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mapButton"
         app:layout_constraintStart_toEndOf="@+id/homeButton" />

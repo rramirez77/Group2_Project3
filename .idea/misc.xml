@@ -3,31 +3,54 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/backbutton.xml" value="0.1485" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/circle.xml" value="0.269" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/ic_msg.xml" value="0.1655" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/drawable/round_drawable.xml" value="0.1655" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_chat.xml" value="0.29981884057971014" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_friends.xml" value="0.29981884057971014" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_friends2.xml" value="0.29981884057971014" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_home.xml" value="0.5" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_maps.xml" value="0.3046875" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_sign_in.xml" value="0.3046875" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_sign_up.xml" value="0.29981884057971014" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/activity_step.xml" value="0.3046875" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/footer.xml" value="0.49635416666666665" />
+        <entry key="..\:/Users/ehasa/AndroidStudioProjects/Project3/app/src/main/res/layout/header.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/roman/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_login.xml" value="0.165" />
-        <entry key="app/src/main/res/drawable/circle.xml" value="0.1" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_chat.xml" value="0.25" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_friends.xml" value="0.2" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_friends2.xml" value="0.25" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_main.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_maps.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_second.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_sign_in.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/activity_step.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/footer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/fragment_home.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/fragment_leader_board.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/fragment_msg.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/fragment_stats.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/tinay/AndroidStudioProjects/Group2_Project3/app/src/main/res/layout/header.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/custom_button_back.xml" value="0.2255" />
         <entry key="app/src/main/res/drawable/ic_leaderboard.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_drawable.xml" value="0.1545" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.15729585006693442" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.17349726775956284" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2441123188405797" />
-        <entry key="app/src/main/res/layout/activity_location_provider.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_map.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_step.xml" value="0.15896739130434784" />
-        <entry key="app/src/main/res/layout/activity_tracking.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_tracking_permission.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/footer.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_leader_board.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_msg.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/header.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
       </map>
     </option>
@@ -37,12 +60,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.1" />
-      </ProjectState>
-    </option>
   </component>
 </project>

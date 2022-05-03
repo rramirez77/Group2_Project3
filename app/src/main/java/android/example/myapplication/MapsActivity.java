@@ -148,6 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 startTracking();
             }
+
         });
 
 

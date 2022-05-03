@@ -1,10 +1,12 @@
 package android.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -28,7 +30,6 @@ public class HomeActivity extends AppCompatActivity {
         TOSTEP.setOnClickListener(view -> {
             Intent i = new Intent(HomeActivity.this, StepActivity.class);
             startActivity(i);
-            finish();
         });
 
         Calendar calendar = Calendar.getInstance();
@@ -113,24 +114,22 @@ public class HomeActivity extends AppCompatActivity {
         mapBtn.setOnClickListener(view -> {
             Intent i = new Intent(HomeActivity.this, MapsActivity.class);
             startActivity(i);
-            finish();
         });
 
         Button friendBtn = findViewById(R.id.friendButton);
         friendBtn.setOnClickListener(view -> {
             Intent i = new Intent(HomeActivity.this, FriendActivity.class);
             startActivity(i);
-            finish();
+
         });
 
         Button homeBtn = findViewById(R.id.homeButton);
         homeBtn.setOnClickListener(view -> {
             Intent i = new Intent(HomeActivity.this, HomeActivity.class);
             startActivity(i);
-            finish();
+
         });
         //END GENERIC MENU
     }
-
 
 }
