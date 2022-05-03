@@ -20,35 +20,43 @@ import com.google.firebase.database.ValueEventListener;
 
 public class FriendActivity extends AppCompatActivity {
 
+    /**
+     * init, build ui
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
+        //init var
+        FriendActivity c = this;
+        LinearLayout friendHolder = findViewById(R.id.friendHolder);
+        String myId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        //friend menu buttons
         Button friendActivity2Btn = findViewById(R.id.friendAdd);
+        friendActivity2Btn.setBackgroundColor(Color.YELLOW);
         friendActivity2Btn.setOnClickListener(view -> {
             Intent i = new Intent(FriendActivity.this, FriendActivity2.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(i);
             finish();
         });
+
         Button friendMakeBtn = findViewById(R.id.friendReq);
+        friendMakeBtn.setBackgroundColor(Color.YELLOW);
         friendMakeBtn.setOnClickListener(view -> {
             Intent i = new Intent(FriendActivity.this, FriendActivity3.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(i);
             finish();
         });
+
+        //pushing button of current menu doesnt need to do anything
+        findViewById(R.id.friendMain).setBackgroundColor(Color.CYAN);
         //end friend buttons
 
-        FriendActivity c = this;
-        LinearLayout friendHolder = findViewById(R.id.friendHolder);
-
-        findViewById(R.id.friendMain).setBackgroundColor(Color.CYAN);
-        findViewById(R.id.friendAdd).setBackgroundColor(Color.YELLOW);
-        findViewById(R.id.friendReq).setBackgroundColor(Color.YELLOW);
-
-        String myId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //database start: our user main
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(myId);
         mDatabase.child("Friends").addValueEventListener(new ValueEventListener() {
             @Override
@@ -59,6 +67,8 @@ public class FriendActivity extends AppCompatActivity {
                     //System.out.println("No friends, return");
                     return;
                 }
+
+                //iterate over all values within IsFriend to build menu
                 String[] s = pln.split(",");
                 for(int i = 0; i < s.length; i++){
                     final int j = i;
@@ -68,16 +78,20 @@ public class FriendActivity extends AppCompatActivity {
                             String name = snapshot.child(s[j]).child("Name").getValue().toString();
                             Button b = new Button(c);
                             b.setText(name);
+
+                            //clicking name button will move to chat with that user
                             b.setOnClickListener(view -> {
                                 Intent i = new Intent(FriendActivity.this, ChatActivity.class);
-                                i.putExtra("otherUser",s[j]);
+                                i.putExtra("otherId",s[j]);
+                                i.putExtra("otherName", name);
                                 startActivity(i);
-                                finish();
-
                             });
+
                             b.setOnLongClickListener(view -> {
+                                //holding button will open delete friend menu
                                 AlertDialog.Builder alert = new AlertDialog.Builder(c);
                                 alert.setTitle("Confirm remove friend?");
+                                //no actual need to delete friend messages.
                                 //alert.setMessage("This will delete all chat history as well.");
                                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
@@ -101,7 +115,9 @@ public class FriendActivity extends AppCompatActivity {
                                     }
                                 });
 
+                                //cancel delete friend
                                 alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();

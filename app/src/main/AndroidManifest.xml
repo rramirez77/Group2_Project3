@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.example.myapplication">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
@@ -13,38 +14,30 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/Journeys"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyB3B84ooJcdqTi2Zg9RfB_Ut9QqNmAfrZc" />
-        <uses-library android:name="com.google.android.maps"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".ChatActivity"
-            android:exported="false"
-            android:parentActivityName= ".HomeActivity"/>
+            android:exported="false" />
         <activity
             android:name=".FriendActivity"
-            android:exported="false"
-            android:parentActivityName= ".HomeActivity"/>
+            android:exported="false" />
         <activity
             android:name=".FriendActivity2"
-            android:exported="false"
-            android:parentActivityName= ".HomeActivity"/>
+            android:exported="false" />
         <activity
             android:name=".FriendActivity3"
-            android:exported="false"
-            android:parentActivityName= ".HomeActivity"/>
+            android:exported="false" />
         <activity
             android:name=".MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps"
-            android:parentActivityName= ".HomeActivity"/>
+            android:exported="true"
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
@@ -55,8 +48,7 @@
 
         <activity
             android:name=".StepActivity"
-            android:exported="true"
-            android:parentActivityName= ".HomeActivity"/>
+            android:exported="true" />
 
         <activity
             android:name=".SignInActivity"
