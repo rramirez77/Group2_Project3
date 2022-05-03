@@ -24,20 +24,25 @@
 
         <activity
             android:name=".ChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName = ".HomeActivity"/>
         <activity
             android:name=".FriendActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName = ".HomeActivity"/>
         <activity
             android:name=".FriendActivity2"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName = ".HomeActivity"/>
         <activity
             android:name=".FriendActivity3"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName = ".HomeActivity"/>
         <activity
             android:name=".MapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:parentActivityName = ".HomeActivity"/>
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
@@ -48,7 +53,8 @@
 
         <activity
             android:name=".StepActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName = ".HomeActivity"/>
 
         <activity
             android:name=".SignInActivity"
