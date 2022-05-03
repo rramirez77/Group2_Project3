@@ -25,5 +25,6 @@
     <string name="button">Button</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="_0">0</string>
-    <string name="title_activity_maps2">MapsActivity2</string>
+    <string name="steps">Steps</string>
+    <string name="taken">0</string>
 </resources>

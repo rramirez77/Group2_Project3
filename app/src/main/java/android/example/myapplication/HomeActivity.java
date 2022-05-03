@@ -1,9 +1,11 @@
 package android.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity {
@@ -24,14 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button TOSTEP = findViewById(R.id.TOSTEPCOUNTER);
-        TOSTEP.setOnClickListener(view -> {
-            Intent i = new Intent(HomeActivity.this, StepActivity.class);
-            startActivity(i);
-            finish();
-        });
-
-        Calendar calendar = Calendar.getInstance();
         TextView welcome = findViewById(R.id.welcome);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         mDatabase.child("Name").addValueEventListener(new ValueEventListener() {
@@ -52,33 +48,11 @@ public class HomeActivity extends AppCompatActivity {
         TextView stepText = findViewById(R.id.counterText);
 
         mDatabase.child("Steps").addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int day = calendar.DAY_OF_WEEK;
-                String steps = "";
-                switch(day){
-                    case 1:
-                        steps = snapshot.child("Mon").getValue().toString();
-                        break;
-                    case 2:
-                        steps = snapshot.child("Tue").getValue().toString();
-                        break;
-                    case 3:
-                        steps = snapshot.child("Wed").getValue().toString();
-                        break;
-                    case 4:
-                        steps = snapshot.child("Thu").getValue().toString();
-                        break;
-                    case 5:
-                        steps = snapshot.child("Fri").getValue().toString();
-                        break;
-                    case 6:
-                        steps = snapshot.child("Sat").getValue().toString();
-                        break;
-                    case 7:
-                        steps = snapshot.child("Sun").getValue().toString();
-                        break;
-                }
+                String[] days = {"ERROR", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+                String steps = snapshot.child(days[DayOfWeek.from(LocalDateTime.now()).getValue()]).getValue().toString();
 
                 /*int steps = Integer.parseInt(snapshot.child("Sun").getValue().toString()) +
                         Integer.parseInt(snapshot.child("Mon").getValue().toString()) +
@@ -113,24 +87,23 @@ public class HomeActivity extends AppCompatActivity {
         mapBtn.setOnClickListener(view -> {
             Intent i = new Intent(HomeActivity.this, MapsActivity.class);
             startActivity(i);
-            finish();
         });
 
         Button friendBtn = findViewById(R.id.friendButton);
         friendBtn.setOnClickListener(view -> {
             Intent i = new Intent(HomeActivity.this, FriendActivity.class);
             startActivity(i);
-            finish();
+
         });
 
         Button homeBtn = findViewById(R.id.homeButton);
+        homeBtn.setText("Steps");
         homeBtn.setOnClickListener(view -> {
-            Intent i = new Intent(HomeActivity.this, HomeActivity.class);
+            Intent i = new Intent(HomeActivity.this, StepActivity.class);
             startActivity(i);
-            finish();
+
         });
         //END GENERIC MENU
     }
-
 
 }
