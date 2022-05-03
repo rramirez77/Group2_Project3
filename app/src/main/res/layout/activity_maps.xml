@@ -66,7 +66,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
 
-            android:background="@drawable/custom_button_back"
+            android:background="#00FF22"
             android:text="Start" />
 
         <Button
@@ -77,16 +77,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/custom_button_back"
+            android:background="@color/purple_200"
             android:text="Stop" />
 
             <include layout="@layout/footer"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
-
-
-
 
     </LinearLayout>
 

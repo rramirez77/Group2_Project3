@@ -3,17 +3,15 @@ package android.example.myapplication;
 import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Paint;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -22,25 +20,15 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Cap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.maps.model.RoundCap;
-import com.google.android.gms.tasks.CancellationToken;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.OnTokenCanceledListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,12 +41,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -91,7 +73,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //binding for google map
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -107,6 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
        //initialize route2 polyline
         //route2 = new PolylineOptions();
 
+
         //polyline = new Polyline(polylineOptions);
         polylineOptions = new PolylineOptions();
         //initilize Start tracking button
@@ -117,9 +99,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 //When click
                 //startTracking
+                polylineOptions = new PolylineOptions();
 
-                startTracking();
+
                 getLocation();
+                startTracking();
                 //zoomIn();
                 //show user their location
                 showUserLocation();
@@ -147,15 +131,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //draw points on Map
                 drawPoints();
 
+                databaseReference.child("Journeys").child("LatLng").child("latitude").setValue(null);
+                databaseReference.child("Journeys").child("LatLng").child("longitude").setValue(null);
                 //polylineOptions = new PolylineOptions();
-                //Polyline newPolyline = mMap.addPolyline(polylineOptions);
+                polylineOptions = new PolylineOptions();
+                //polyline = mMap.addPolyline(polylineOptions);
                 //polyline =mMap.addPolyline(polylineOptions);
 
                 //delete points on polyline
                 //
-
-
-
+                stopTracking.setVisibility(View.GONE);
+                startTracking.setVisibility(View.VISIBLE);
 
             }
         });
@@ -220,8 +206,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         };
 
-
-
         databaseReference.child("Journeys").child("LatLng").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -245,17 +229,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-
-
-
-
-
     }//end of onCreate
-
-
-
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -310,13 +284,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void drawPoints(){
-
-        polyline =  mMap.addPolyline(polylineOptions);
+        mMap.addPolyline(polylineOptions);
         zoomIn();
-
-
-
-
 
     }
 
@@ -328,34 +297,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void getLocation() {
-
-       /* client.getCurrentLocation(PRIORITY_HIGH_ACCURACY, new CancellationToken() {
-            @NonNull
-            @Override
-            public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
-                return null;
-            }
-
-            @Override
-            public boolean isCancellationRequested() {
-                return false;
-            }
-        }).addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if(location != null){
-                    LatLng temp = new LatLng(location.getLatitude(), location.getLongitude());
-                    databaseReference.child("Journeys").child("LatLng").setValue(temp);
-                    //getPoints(temp);
-
-                }
-
-
-
-
-            }
-        });*/
 
         client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
@@ -365,14 +308,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     databaseReference.child("Journeys").child("LatLng").setValue(temp);
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 16f));
                 }
-
-
-
             }
         });
 
     }
 
+    @SuppressLint("MissingPermission")
     private void zoomIn(){
 
         /*client.getCurrentLocation(PRIORITY_HIGH_ACCURACY, new CancellationToken() {
