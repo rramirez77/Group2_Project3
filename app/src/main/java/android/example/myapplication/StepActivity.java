@@ -46,8 +46,6 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
 
         //Call loadData function
         loadData();
-        //Call resetsteps function
-        resetSteps();
 
         //setup sensor management to get the sensor to work
         sensorMng = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
@@ -94,10 +92,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         }
 
     }
-    private void resetSteps(){
 
-
-    }
     private void saveData(){
         //store data and refrence it later
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
