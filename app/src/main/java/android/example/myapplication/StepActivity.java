@@ -11,10 +11,18 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
+
 
 public class StepActivity extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorMng;
@@ -74,6 +82,15 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         // if boolean is true, set textview to the value/number of steps taken
         if(moving){
             tv_stepsTaken.setText(String.valueOf(sensorEvent.values[0]));
+
+            String[] days = {"ERROR", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+            String day = days[Calendar.DAY_OF_WEEK];
+            FirebaseDatabase.getInstance().getReference().child("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .child("Steps")
+                    .child(day)
+                    .setValue(sensorEvent.values[0]);
+
         }
 
     }
