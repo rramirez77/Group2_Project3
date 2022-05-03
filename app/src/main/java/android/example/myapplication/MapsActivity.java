@@ -42,7 +42,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -54,8 +54,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private FusedLocationProviderClient client;
     //binding to display map
     private ActivityMapsBinding binding;
-
-    LatLng latLng;
+    //latitdue and longitude
+    private LatLng latLng;
     //LocationCallback for tracking locaiton
     private LocationCallback locationCallback;
     //Stop tracking button
@@ -64,10 +64,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button startTracking;
     //Database instance
     private DatabaseReference databaseReference;
-
-    //polyline
+    //polylineOptions to set up the polyline
     PolylineOptions polylineOptions;
-    Polyline polyline;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -83,24 +82,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //initialize client to obtain location
         client = LocationServices.getFusedLocationProviderClient(MapsActivity.this);
+
         //initialize datareference to user that's logged in
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        //initialize route2 polyline
-        //route2 = new PolylineOptions();
-
 
         //polyline = new Polyline(polylineOptions);
         polylineOptions = new PolylineOptions();
+
+
         //initilize Start tracking button
         startTracking = findViewById(R.id.StartButton);
         startTracking.setVisibility(View.VISIBLE);
         startTracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //When click
+                //When clicked
                 polylineOptions = new PolylineOptions();
-
-
                 getLocation();
                 startTracking();
 
@@ -134,9 +131,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 databaseReference.child("Journeys").child("LatLng").child("longitude").setValue(null);
 
                 polylineOptions = new PolylineOptions();
-
-
-
                 stopTracking.setVisibility(View.GONE);
                 startTracking.setVisibility(View.VISIBLE);
 
@@ -173,12 +167,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         }else{
-            //permission denied
+            //permission denied, ask again
             ActivityCompat.requestPermissions(MapsActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
 
         }
 
-
+        //location call back to get locations
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -200,6 +194,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         };
 
+
+        //Takes a screenshot of the latitude and longitude in the database whenever there is a change
         databaseReference.child("Journeys").child("LatLng").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -223,17 +219,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-    }//end of onCreate
+    }
+
+
+    //Displays Map
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
 
     }
 
 
 
-    //shows user's current location on the map
+    //shows user's live current location on the map
     public void showUserLocation(){
         if(ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             mMap.setMyLocationEnabled(true);
@@ -242,8 +240,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
     }
-
-
 
 
     //set up a location listener to track location
@@ -257,17 +253,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationRequest.setInterval(10000);
             client.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
 
-
         }
 
-        else{
-            //ask for permission first
+    }
 
 
-        }
-
-    }//end of method
-
+    //add lat and longitude points to the polylineOptions
     private void getPoints(LatLng latlng) {
 
 
@@ -276,12 +267,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    //draws the points on the map
     private void drawPoints(){
         mMap.addPolyline(polylineOptions);
         zoomIn();
 
     }
 
+    //if permission is granted, calls location listener to start tracking
     private void startTracking(){
         if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
@@ -290,6 +283,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    //gets the location
     @SuppressLint("MissingPermission")
     private void getLocation() {
 
@@ -323,12 +317,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    //zooms into the last location tracked to show in the map
     @SuppressLint("MissingPermission")
     private void zoomIn(){
-
-
-
-
         client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
